@@ -2,7 +2,7 @@ package Kwiki::Yahoo;
 use Kwiki::Plugin '-Base';
 use Kwiki::Installer '-base';
 
-our $VERSION = '0.02';
+our $VERSION = '0.03';
 
 const class_id    => 'yahoo_api';
 const class_title => 'Yahoo API';
@@ -120,23 +120,33 @@ Error: [% error %]
 Yahoo [% key %] search for [% query %]
 </div>
 
-<ul>
 [% FOREACH item = html %]
- <li class="yahoo_item">
-    [% item %]
- </li>
+<div class="yahoo_item"
+[% item %]
+ </div>
 [% END %]
-</ul>
+<div class="yahoo_attribution">
+<a href="http://developer.yahoo.net/">powered by Yahoo! Search</a>
+</div>
 </div>
 <!-- END yahoo.html -->
 __css/yahoo.css__
-// borrowed from the Yahoo::Search exapmle
- .yResult { display: block; border: #CCF 3px solid ; padding:10px 
+/* borrowed from the Yahoo::Search exapmle */
+.yResult {
+    display: block;
+    border:  3px solid #CCF;
+    padding: 10px;
 }
 .yLink   { }
-.yTitle  { display:none }
-.yImg    { border: solid 1px }
-.yUrl    { display:none }
-.yMeta   { font-size: 80% }
+.yTitle  { display:none; }
+.yImg    { border: solid 1px; }
+.yUrl    { display:none; }
+.yMeta   { font-size: 80%; }
 .ySrcUrl { }
-.ySum    { font-family: arial; font-size: 90% }
+.ySum    {
+    font-family: arial;
+    font-size: 90%;
+}
+.yahoo_attribution {
+    text-align: right;
+}

@@ -42,7 +42,7 @@ SKIP: {
         my $result = $formatter->text_to_html("\n" . $test->{wafl} . "\n\n");
         my $count = $test->{count};
         if ($count) {
-            my @lines = split(/<li class/, $result);
+            my @lines = split(/<div class="yahoo_item/, $result);
             my $lines = scalar(@lines) - 1;
             is($lines, $count, "got $count results");
         }

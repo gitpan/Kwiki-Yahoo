@@ -1,4 +1,10 @@
 ---
+version: 0.03
+date: Mon Mar  7 12:46:24 PST 2005
+changes:
+- Get more in line with yahoo service agreement
+- Adjust style
+---
 version: 0.02
 date: Thu Mar  3 11:23:37 PST 2005
 changes: - Bug fix in eval handling
