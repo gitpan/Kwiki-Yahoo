@@ -1,4 +1,8 @@
 ---
+version: 0.02
+date: Thu Mar  3 11:23:37 PST 2005
+changes: - Bug fix in eval handling
+---
 version: 0.01
 date: Tue Mar  1 22:10:46 PST 2005
 changes: - Initial release

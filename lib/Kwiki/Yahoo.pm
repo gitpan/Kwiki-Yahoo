@@ -2,7 +2,7 @@ package Kwiki::Yahoo;
 use Kwiki::Plugin '-Base';
 use Kwiki::Installer '-base';
 
-our $VERSION = '0.01';
+our $VERSION = '0.02';
 
 const class_id    => 'yahoo_api';
 const class_title => 'Yahoo API';
@@ -47,9 +47,15 @@ sub html {
     $key =~ s/^yahoo_//;
 
     my ($query, $config) = split(/\s*\|\s*/, $args);
-    $config = $config
-      ? eval "{ $config }"
-      : ();
+    if ($config and
+        $config =~ /^(?:\s*[A-Z0-9_\-]+\s*=>\s*["'A-Z0-9_\-.+ ]+,*\s*)+$/i) {
+        $config = eval "{ $config }";
+    } else {
+        $config = ();
+    }
+#     $config = $config
+#       ? eval "{ $config }"
+#       : ();
 
     my $html = $self->hub->yahoo_api->do_search($key, $query, $config);
 
