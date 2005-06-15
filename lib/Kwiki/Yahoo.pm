@@ -2,7 +2,7 @@ package Kwiki::Yahoo;
 use Kwiki::Plugin '-Base';
 use Kwiki::Installer '-base';
 
-our $VERSION = '0.03';
+our $VERSION = '0.04';
 
 const class_id    => 'yahoo_api';
 const class_title => 'Yahoo API';
@@ -25,7 +25,8 @@ sub do_search {
     my $args = shift;
 
     require Yahoo::Search;
-    my @html = Yahoo::Search->HtmlResults(
+    require Encode;
+    my @html = map {Encode::decode('utf8', $_) } Yahoo::Search->HtmlResults(
         ucfirst($type) => $query,
         AppId => "Kwiki::Yahoo $VERSION",
         %$args,
@@ -53,9 +54,6 @@ sub html {
     } else {
         $config = ();
     }
-#     $config = $config
-#       ? eval "{ $config }"
-#       : ();
 
     my $html = $self->hub->yahoo_api->do_search($key, $query, $config);
 

@@ -1,5 +1,5 @@
 name: Kwiki-Yahoo
-version: 0.03
+version: 0.04
 abstract: Access Yahoo API with with WAFL
 author: Chris Dent <cdent@burningchrome.com>
 license: perl
